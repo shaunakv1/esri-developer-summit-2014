@@ -3233,6 +3233,7 @@ var Reveal = (function(){
 
 
 	return {
+		//isRemote: isRemote,
 		initialize: initialize,
 		configure: configure,
 		sync: sync,
@@ -3318,9 +3319,19 @@ var Reveal = (function(){
 			return config;
 		},
 
+		// isRemote: function () {
+		// 	return false;
+		// },
+		
 		// Helper method, retrieves query string as a key/value hash
 		getQueryHash: function() {
 			var query = {};
+			// if (/remote/.test(self.location.href)){
+			// 	this.isRemote = function () {
+			// 		return true;
+			// 	}
+			// 	console.log('remote mode');
+			// }
 
 			location.search.replace( /[A-Z0-9]+?=([\w\.%-]*)/gi, function(a) {
 				query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
