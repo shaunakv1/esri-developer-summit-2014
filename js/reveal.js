@@ -121,7 +121,7 @@ var Reveal = (function(){
 		// The horizontal and vertical index of the currently active slide
 		indexh,
 		indexv,
-
+		remote,
 		// The previous and current slide HTML elements
 		previousSlide,
 		currentSlide,
@@ -3233,6 +3233,7 @@ var Reveal = (function(){
 
 
 	return {
+		//isRemote: isRemote,
 		initialize: initialize,
 		configure: configure,
 		sync: sync,
@@ -3318,9 +3319,18 @@ var Reveal = (function(){
 			return config;
 		},
 
+		isRemote: function () {
+			return remote;
+		},
+		
 		// Helper method, retrieves query string as a key/value hash
 		getQueryHash: function() {
+			remote  = false;
 			var query = {};
+			if (/remote/.test(self.location.href)){
+				remote = true;
+				console.log('remote mode');
+			}
 
 			location.search.replace( /[A-Z0-9]+?=([\w\.%-]*)/gi, function(a) {
 				query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
