@@ -7,7 +7,7 @@ Reveal.addEventListener( 'ready', function( event ) {
 Reveal.addEventListener( 'slidechanged', function( event ) {
     // event.previousSlide, event.currentSlide, event.indexh, event.indexv
     //console.log(event.indexh);
-    if(true){
+    if(Reveal.isRemote()){
       fb.set({
         slide:{
           h: event.indexh,
